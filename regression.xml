@@ -1,0 +1,27 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Regression" >
+    <test name="Regression Test">
+
+        <parameter name="name" value="meryem"></parameter>
+        <parameter name="country" value="USA"></parameter>
+        <parameter name="city" value="Philly"></parameter>
+        <parameter name="card" value="257532158"></parameter>
+        <parameter name="month" value="12"></parameter>
+        <parameter name="year" value="23"></parameter>
+
+        <classes>
+            <class name="com.blaze.scripts.BlazeTest"></class>
+
+        </classes>
+
+
+
+
+
+
+
+    </test>
+
+
+</suite>

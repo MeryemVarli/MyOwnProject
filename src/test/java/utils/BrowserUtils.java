@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.locks.Condition;
 
 public class BrowserUtils {
 
@@ -165,6 +166,39 @@ public void switchWindowWithURL(WebDriver driver,String Url){
     }
 
 
+}
+
+
+
+
+public static void acceptAlert(WebDriver driver){
+
+       try{
+           WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(20));
+          wait.until(ExpectedConditions.alertIsPresent());
+           Alert alert=driver.switchTo().alert();
+           alert.accept();
+       }catch (NoAlertPresentException e){
+           System.err.println("Exception occurred while attempting to switch to js alert  "+e.getMessage());
+
+       }
+}
+
+
+public static String getTextFromAlert(WebDriver driver){
+
+String text="";
+try{
+    WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(20));
+    wait.until(ExpectedConditions.alertIsPresent());
+    Alert alert=driver.switchTo().alert();
+    text = alert.getText();
+
+}catch (NoAlertPresentException e){
+    System.err.println("Exception occurred while attempting switch to js alert "+e.getMessage());
+}
+
+return text;
 }
 
 
